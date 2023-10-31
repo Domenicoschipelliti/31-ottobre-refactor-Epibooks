@@ -1,27 +1,27 @@
 import { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 
-const AddComment = ({ dialogo }) => {
+const AddComment = ({ prop }) => {
   const [comment, setComment] = useState({
     comment: {
       comment: "",
       rate: 1,
-      elementId: dialogo.asin,
+      elementId: prop.asin,
     },
   });
 
   useEffect(
     (prevProps) => {
-      if (prevProps.asin !== dialogo.asin) {
+      if (prevProps.asin !== prop.asin) {
         setComment({
           comment: {
             ...comment,
-            elementId: dialogo.asin,
+            elementId: prop.asin,
           },
         });
       }
     },
-    [comment, dialogo.asin]
+    [comment, prop.asin]
   );
 
   const sendComment = (e) => {
@@ -43,7 +43,7 @@ const AddComment = ({ dialogo }) => {
             comment: {
               comment: "",
               rate: 1,
-              elementId: dialogo.asin,
+              elementId: prop.asin,
             },
           });
         } else {
